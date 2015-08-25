@@ -5,7 +5,7 @@ std::string dialog[10];
 std::string Text[] = {"So many walls...But I see an exit","Something opened in the distance","Nothing happened...I feel like pressing more though","That's two","That's the third one","The last one...Something opened in the distance"};
 
 
-void dialoge(std::string Stuff)
+void WriteDialogue(std::string Stuff)
 {
 	for (int i = 0;i < 10;++i)
 	{
@@ -15,7 +15,7 @@ void dialoge(std::string Stuff)
 }
 
 
-void opendialog()
+void LoadDialogue()
 {
 	std::string line;
 	std::ifstream myfile ("Map/dialog.txt");
