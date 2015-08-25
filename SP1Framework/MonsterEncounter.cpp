@@ -15,10 +15,10 @@
 #include "Titles.h"
 #include "MusicFiles.h"
 
-
+const int QuestionNos = 60;
 
 std::string Question; 
-std::string Answer[40];
+std::string Answer[QuestionNos];
 
 int monsterAppear = 0;
 int Encounter = 0;
@@ -138,7 +138,7 @@ void YouFailed() // Question answered is wrong
 void chooseQn() // CHOOSE the question from the file
 {
 	std::ifstream myfile ("GE.txt");
-	int n = (rand() % 40) * 5;
+	int n = (rand() % QuestionNos) * 5;
 	int o = 0;
 	int A = 1;
 	bool checkQ = false; // check whether question has been retrieved
