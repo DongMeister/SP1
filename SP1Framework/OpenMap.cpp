@@ -1,6 +1,7 @@
 #include "game.h"
 #include "OpenMap.h"
 #include "Framework\console.h"
+#include "MusicFiles.h"
 #include <iostream>
 #include <iomanip>
 #include <sstream>

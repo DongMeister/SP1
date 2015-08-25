@@ -1,7 +1,7 @@
 ﻿Sountrack lists
 --------------------
 BGM - Puppet (Ib)
-Monster Encounter - Clock (Ib)
+Main Menu - Clock (Ib)
 Monster Battle - Shudder (Mad Father)
 
 Optional

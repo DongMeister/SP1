@@ -81,10 +81,12 @@
     <ClCompile Include="game.cpp" />
     <ClCompile Include="dialognscene.cpp" />
     <ClCompile Include="HealthBar.cpp" />
+    <ClCompile Include="IndicationOfNearbyMonsterThruColour.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MainMenu.cpp" />
     <ClCompile Include="MobFight.cpp" />
     <ClCompile Include="MonsterEncounter.cpp" />
+    <ClCompile Include="MusicFiles.cpp" />
     <ClCompile Include="OpenMap.cpp" />
     <ClCompile Include="screenAnimate.cpp" />
     <ClCompile Include="Titles.cpp" />
@@ -96,9 +98,11 @@
     <ClInclude Include="Framework\timer.h" />
     <ClInclude Include="game.h" />
     <ClInclude Include="HealthBar.h" />
+    <ClInclude Include="IndicationOfNearbyMonsterThruColour.h" />
     <ClInclude Include="MainMenu.h" />
     <ClInclude Include="MonsterBattle.h" />
     <ClInclude Include="MonsterEncounter.h" />
+    <ClInclude Include="MusicFiles.h" />
     <ClInclude Include="OpenMap.h" />
     <ClInclude Include="OpenMobs.h" />
     <ClInclude Include="screenAnimate.h" />

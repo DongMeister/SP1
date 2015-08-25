@@ -13,6 +13,8 @@
 #include "dialognscene.h"
 #include "Titles.h"
 #include "Controls.h"
+#include "MusicFiles.h"
+#include "IndicationOfNearbyMonsterThruColour.h"
 
 #include <iostream>
 #include <iomanip>
@@ -66,7 +68,7 @@ void init()
 	starting = charLocation;
     // sets the width, height and the font name to use in the console
     console.setConsoleFont(0,16 , L"Asa");
-
+	MusicWillPlay(0);
 	opendialog();
 }
 
@@ -296,7 +298,7 @@ void renderMap()
 void renderCharacter()
 {
     // Draw the location of the character
-    console.writeToBuffer(charLocation, (char)2, 0x0C);
+	DisplayifMonsterIsNearOrFarAwayFromPlayer();
 
 	displayHealth(); // displaying health bar
 	

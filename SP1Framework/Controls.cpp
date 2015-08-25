@@ -1,4 +1,6 @@
 #include "Controls.h"
+#include "game.h"
+#include "MusicFiles.h"
 
 extern bool   keyPressed[K_COUNT];
 extern questions Quest;
@@ -11,11 +13,13 @@ extern double MazePoints;
 extern double TotalPoints;
 extern double TotalBattlePoints;
 extern double battlePoints;
+extern Levels level;
 
 void menuKeypress() // keys for the menu
 {
 	if (keyPressed[K_ONE])
 	{
+		MusicWillPlay(1);
 		state = InMaze;
 		openMap(0);
 		dialouge = true;
@@ -31,6 +35,26 @@ void ChooseBattleKeypress()
 	}
 	if (keyPressed[K_TWO])
 	{
+		if (level == lvl3)
+		{
+			MusicWillPlay(3);
+		}
+
+		else if (level == lvl61)
+		{
+			MusicWillPlay(4);
+		}
+
+		else if(level == lvl62)
+		{
+			MusicWillPlay(5);
+		}
+
+		else
+		{
+			MusicWillPlay(1);
+		}
+
 		MinusHealthMeter();
 	}
 }
@@ -41,6 +65,7 @@ void BattleKeypress()
 	{
 		if (Answer[Quest.up] == Answer[4]) // Answer[4] is used as a checker for the correct answer
 		{
+			MusicWillPlay(9);
 			state = Correct;
 			PlusHealthMeter();
 		}
@@ -54,6 +79,7 @@ void BattleKeypress()
 	{
 		if (Answer[Quest.left] == Answer[4])
 		{
+			MusicWillPlay(9);
 			state = Correct;
 			PlusHealthMeter();
 		}
@@ -67,6 +93,7 @@ void BattleKeypress()
 	{
 		if (Answer[Quest.right] == Answer[4])
 		{
+			MusicWillPlay(9);
 			state = Correct;
 			PlusHealthMeter();
 		}
@@ -82,6 +109,7 @@ void GameOverKeypress()
 {
 	if (keyPressed[K_SPACE])
 	{
+		MusicWillPlay(0);
 		restart();
 		state = Menu;
 	}
@@ -91,7 +119,25 @@ void CorrectKeypress()
 {
 	if (keyPressed[K_SPACE])
 	{
-		PlaySound(TEXT("Music/Clock.wav"), NULL, SND_FILENAME | SND_ASYNC);
+		if (level == lvl3)
+		{
+			MusicWillPlay(3);
+		}
+
+		else if (level == lvl61)
+		{
+			MusicWillPlay(4);
+		}
+
+		else if(level == lvl62)
+		{
+			MusicWillPlay(5);
+		}
+
+		else
+		{
+			MusicWillPlay(1);
+		}
 		state = InMaze;
 		battlePoints *= 10;
 		TotalBattlePoints += battlePoints;
@@ -112,7 +158,26 @@ void WrongKeypress()
 
 		else
 		{
-			PlaySound(TEXT("Music/Clock.wav"), NULL, SND_FILENAME | SND_ASYNC);
+			if (level == lvl3)
+			{
+				MusicWillPlay(3);
+			}
+
+			else if (level == lvl61)
+			{
+				MusicWillPlay(4);
+			}
+
+			else if(level == lvl62)
+			{
+				MusicWillPlay(5);
+			}
+
+			else
+			{
+				MusicWillPlay(1);
+			}
+
 			state = InMaze;
 		}
 	}
@@ -122,6 +187,26 @@ void ClearStageKeypress()
 {
 	if (keyPressed[K_SPACE])
 	{
+		if (level == lvl3)
+		{
+			MusicWillPlay(3);
+		}
+
+		else if (level == lvl61)
+		{
+			MusicWillPlay(4);
+		}
+
+		else if(level == lvl62)
+		{
+			MusicWillPlay(5);
+		}
+
+		else
+		{
+			MusicWillPlay(1);
+		}
+
 		state = InMaze;
 		MazePoints = 0;
 		TotalBattlePoints = 0;

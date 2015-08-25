@@ -6,6 +6,7 @@
 extern StopWatch g_timer;
 extern bool g_quitGame;
 
+
 struct questions
 {
 	int up;

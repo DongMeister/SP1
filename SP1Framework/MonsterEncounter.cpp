@@ -15,6 +15,7 @@
 #include "OpenMobs.h"
 #include "screenAnimate.h"
 #include "Titles.h"
+#include "MusicFiles.h"
 
 
 
@@ -23,7 +24,7 @@ std::string Answer[40];
 
 int monsterAppear = 0;
 int Encounter = 0;
-const int MeetMonster = 100;
+const int MeetMonster = 200;
 
 extern Console console;
 extern double battlePoints;
@@ -44,22 +45,9 @@ void ChanceEncounter()
 	monsterAppear = rand() % 8; //Chance of meeting different type of monsters
 	Encounter = Encounter + rand() % 5 + 1; //Steps taken to encounter a monster
 	
-	if (Encounter < 50)
+	if (Encounter >= MeetMonster)
 	{
-		Beep(1500, 50); // short low frequency beep per step
-	}
-
-	if (Encounter >= 50 && Encounter < 80)
-	{
-		Beep(2000, 50); // short higher frequency beep
-	}
-
-	else if (Encounter >= 80 && Encounter <= 99)
-	{
-		Beep(2500, 50); // short even higher frequency beep
-	}
-	else if (Encounter >= MeetMonster)
-	{
+		MusicWillPlay(2);
 		chooseQn(); // selects questions from text file
 		RandomizeAnswers(); // shuffles up the answers for the question
 		splashAnimate(level);
@@ -141,7 +129,6 @@ void YouDidIt() // Question correctly answered display
 
 void YouFailed() // Question answered is wrong
 {
-	PlaySound(NULL, NULL, 0);
 	if (MeterBar > 0)
 	{
 		console.writeToBuffer(console.getConsoleSize().X/2 - 12, console.getConsoleSize().Y/2, "WRONG! You lost 1 health" , 0x0C);
@@ -149,6 +136,7 @@ void YouFailed() // Question answered is wrong
 	}
 	else
 	{
+		MusicWillPlay(10);
 		state = GameOver;
 	}
 }
@@ -191,7 +179,6 @@ void chooseQn() // CHOOSE the question from the file
 
 void StageClear() // displays the points achieved in the stage
 {
-	PlaySound(NULL, NULL, 0);
 	console.writeToBuffer(console.getConsoleSize().X/2 - 8,console.getConsoleSize().Y/2 - 5, "Stage Clear!",0x0A);
 	std::ostringstream ss;
     ss << std::fixed << std::setprecision(0);
