@@ -2,10 +2,9 @@
 #include "game.h"
 #include "MusicFiles.h"
 
-extern bool   keyPressed[K_COUNT];
-extern questions Quest;
+extern bool keyPressed[K_COUNT];
 extern int MeterBar;
-extern bool dialouge;
+extern bool DialogueIsRunning;
 extern int chat;
 extern std::string Answer[5];
 
@@ -22,7 +21,7 @@ void menuKeypress() // keys for the menu
 		MusicWillPlay(1);
 		state = InMaze;
 		openMap(0);
-		dialouge = true;
+		DialogueIsRunning = true;
 		chat = 0;
 	}
 }
@@ -63,7 +62,7 @@ void BattleKeypress()
 {
 	if (keyPressed[K_UP])
 	{
-		if (Answer[Quest.up] == Answer[4]) // Answer[4] is used as a checker for the correct answer
+		if (Answer[1] == Answer[4]) // Answer[4] is used as a checker for the correct answer
 		{
 			MusicWillPlay(9);
 			state = Correct;
@@ -77,7 +76,7 @@ void BattleKeypress()
 	}
 	if (keyPressed[K_LEFT])
 	{
-		if (Answer[Quest.left] == Answer[4])
+		if (Answer[2] == Answer[4])
 		{
 			MusicWillPlay(9);
 			state = Correct;
@@ -91,7 +90,7 @@ void BattleKeypress()
 	}
 	if (keyPressed[K_RIGHT])
 	{
-		if (Answer[Quest.right] == Answer[4])
+		if (Answer[3] == Answer[4])
 		{
 			MusicWillPlay(9);
 			state = Correct;

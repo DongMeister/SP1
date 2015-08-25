@@ -10,14 +10,12 @@
 #include "OpenMap.h"
 #include "OpenMobs.h"
 #include "screenAnimate.h"
-#include "dialognscene.h"
+#include "Dialogue.h"
 #include "Titles.h"
 #include "Controls.h"
 #include "MusicFiles.h"
 #include "IndicationOfNearbyMonsterThruColour.h"
 
-#include <iostream>
-#include <iomanip>
 #include <sstream>
 #include <fstream>
 #include <string>
@@ -37,7 +35,7 @@ double TotalBattlePoints = 0; // Total Points achieved throughout
 double Dialogtime = 0; // countdown for dialog time
 bool   keyPressed[K_COUNT];
 char   g_cWallPosition[80][30];
-bool   dialouge = false;
+bool   DialogueIsRunning = false;
 Levels level = lvl1;
 Screen state;
 std::string Maps[] = {"Map/Map1.txt","Map/Map2.txt","Map/Map3.txt", "Map/Map4.1_Nostalgia.txt", "Map/Map4.2_Frustration.txt", "Map/Map5.1_Reminiscence.txt", "Map/Map5.2_Static.txt", "Map/Map6.1_Euphoria.txt", "Map/Map6.2_Forgotten.txt"};
@@ -45,7 +43,6 @@ std::string Monsters[] = {"Mobs/battleBAT.txt","Mobs/battleGOAT.txt","Mobs/battl
 
 extern std::string Answer[5];
 extern int MeterBar;
-extern questions Quest;
 extern int Encounter;
 extern double AnimateTimer;
 extern unsigned int randomAnimate;
@@ -126,7 +123,7 @@ void update(double dt)
 		case 1:
 			moveCharacter();
 			MazePoints += dt; // update timer in-maze
-			if (dialouge == true)
+			if (DialogueIsRunning == true)
 			{
 				Dialogtime += dt;
 			}
@@ -252,9 +249,9 @@ void moveCharacter()
 				checkAdvance();
 			}
 		}
-		if (keyPressed[K_SPACE] && dialouge == true)
+		if (keyPressed[K_SPACE] && DialogueIsRunning == true)
 		{
-				dialouge = false;
+				DialogueIsRunning = false;
 		}
 
 	}
@@ -276,23 +273,13 @@ void clearScreen()
 
 void renderMap()
 {
-    // Set up sample colours, and output shadings
-    const WORD colors[] = {
-        0x1A, 0x2B, 0x3C, 0x4D, 0x5E, 0x6F,
-        0xA1, 0xB2, 0xC3, 0xD4, 0xE5, 0xF6
-    };
-
-
-			for (int y = 0;y < 30;++y)
-			{
-				for (int x = 0;x < 80;++x)
-				{
-					console.writeToBuffer( x, y, g_cWallPosition[x][y] , 0x06);
-				}
-			}
-		
-
-	
+	for (int y = 0;y < 30;++y)
+	{
+		for (int x = 0;x < 80;++x)
+		{
+			console.writeToBuffer( x, y, g_cWallPosition[x][y] , 0x06);
+		}
+	}	
 }
 
 void renderCharacter()
@@ -308,20 +295,29 @@ void renderGame()
 {
 	renderMap();
 	renderCharacter();
-	if (dialouge == true)
+	renderDialogue();
+	renderMazeTimer();
+}
+
+void renderDialogue()
+{
+	if (DialogueIsRunning == true)
 	{
 		dialoge(choosedialog(chat));
 		if (Dialogtime > 3)
 		{
 			Dialogtime = 0;
-			dialouge = false;
+			DialogueIsRunning = false;
 		}
 	}
+}
+
+void renderMazeTimer()
+{
 	std::ostringstream ss;
 	ss << std::fixed << std::setprecision(0);
 	ss << MazePoints << "secs has passed"; // maze timer
 	console.writeToBuffer(0,0,ss.str(),0x0A);
-
 }
 
 void renderFramerate()

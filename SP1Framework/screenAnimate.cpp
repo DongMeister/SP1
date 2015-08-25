@@ -1,13 +1,12 @@
-#include <iostream>
-#include <iomanip>
-#include <sstream>
-#include <fstream>
-#include <string>
 #include "screenAnimate.h"
 #include "game.h"
 #include "Framework\timer.h"
 #include "Framework\console.h"
 #include "MonsterEncounter.h"
+
+#include <sstream>
+#include <fstream>
+#include <string>
 
 extern std::string Maps[];
 extern Console console;
@@ -18,17 +17,16 @@ int a = 0;
 int b = 0;
 
 void splashAnimate(int i)
-{
-			
-			for (unsigned int y = 0;y < 30;++y)
-			{
-				for (unsigned int x = 0;x < 80;++x)
-				{
-					g_cAnimatePosition[x][y] = g_cWallPosition[x][y];
-				}
-			}
+{		
+	for (unsigned int y = 0;y < 30;++y)
+	{
+		for (unsigned int x = 0;x < 80;++x)
+		{
+			g_cAnimatePosition[x][y] = g_cWallPosition[x][y];
+		}
+	}
 
-			AnimateTimer = 0;
+	AnimateTimer = 0;
 }
 
 

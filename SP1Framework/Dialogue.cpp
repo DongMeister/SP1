@@ -1,4 +1,4 @@
-#include "dialognscene.h"
+#include "Dialogue.h"
 
 std::string dialog[10];
 

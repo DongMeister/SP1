@@ -1,8 +1,6 @@
 #include <iostream>
-#include <cstdlib>
-#include <time.h>
-#include <string>
 #include <iomanip>
+#include <string>
 #include <sstream>
 #include <fstream>
 
@@ -35,8 +33,6 @@ extern std::string Maps[];
 extern Levels level;
 extern int MeterBar;
 
-
-questions Quest;
 
 void ChanceEncounter()
 {
@@ -81,25 +77,21 @@ void displayBattle() // displays the battle options
 
 		for (int A = 1;A < 4;++A)
 		{
-			int slot;
 			std::string added;
 			if (A == 1)
 			{
 				added = "(Up arrow)";
-				slot = Quest.up; // Quest.up is the integer holding the first answer
 			}
 			else if (A == 2)
 			{
 				added = "(Left arrow)";
-				slot = Quest.left; // Holding the 2nd answer
 			}
 			else if (A == 3)
 			{
 				added = "(Right arrow)";
-				slot = Quest.right; // lastly the third answer
 			}
 
-			console.writeToBuffer(console.getConsoleSize().X/2 - 33,console.getConsoleSize().Y/2+4+A, Answer[slot] + added, 0x06); // showing the answer in order
+			console.writeToBuffer(console.getConsoleSize().X/2 - 33,console.getConsoleSize().Y/2+4+A, Answer[A] + added, 0x06); // showing the answer in order
 		}
 	}
 	else
@@ -199,21 +191,12 @@ void StageClear() // displays the points achieved in the stage
 
 void RandomizeAnswers()
 {
-	int ans1,ans2;
-	Quest.up = rand() %3 + 1; // randomly choose the first answer
-	ans1 = Quest.up;
-	Quest.left = rand()%3 + 1; // randomly chooses the second answer
-	ans2 = Quest.left;
-	while (Quest.left == ans1) // checks whether the second answer is the same as the first answer, if so, random again until you get a different value
+	
+	for (int i = 0;i < 3;++i) // randomly shuffles the questions 3 times
 	{
-		Quest.left = rand()%3 + 1;
-		ans2 = Quest.left;
-	}
-	for (int i = 1;i < 4;i++) // Leaving one answer behind, just choose the last possible answer
-	{
-		if (i != ans1 && i != ans2)
-		{
-			Quest.right = i;
-		}
+		int a = rand() %3 + 1;
+		std::string Holder = Answer[1];
+		Answer[1] = Answer[a];
+		Answer[a] = Holder;
 	}
 }

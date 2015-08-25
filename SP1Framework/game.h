@@ -6,14 +6,6 @@
 extern StopWatch g_timer;
 extern bool g_quitGame;
 
-
-struct questions
-{
-	int up;
-	int left;
-	int right;
-};
-
 enum Levels
 {
 	lvl1,
@@ -76,5 +68,7 @@ void renderCharacter();     // renders the character into the buffer
 void renderFramerate();     // renders debug information, frame rate, elapsed time, etc
 void renderToScreen();      // dump the contents of the buffer to the screen, one frame worth of game
 void renderGame();
+void renderDialogue();
+void renderMazeTimer();
 
 #endif // _GAME_H

@@ -1,13 +1,12 @@
 #ifndef _CONTROLS_H
 #define _CONTROLS_H
 
-#include <iostream>
 #include <string>
 #include "game.h"
 #include "HealthBar.h"
 #include "MainMenu.h"
 #include "OpenMap.h"
-#include "dialognscene.h"
+#include "Dialogue.h"
 
 
 void menuKeypress();

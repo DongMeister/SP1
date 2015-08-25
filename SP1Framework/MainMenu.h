@@ -3,7 +3,6 @@
 
 #include "Framework\console.h"
 #include "game.h"
-#include <iostream>
 #include <iomanip>
 #include <sstream>
 #include <fstream>

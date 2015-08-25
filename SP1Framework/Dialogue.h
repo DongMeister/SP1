@@ -1,7 +1,6 @@
-#ifndef _DIALOGNSCENE_H
-#define _DIALOGNSCENE_H
+#ifndef _DIALOGUE_H
+#define _DIALOGUE_H
 
-#include <iostream>
 #include <fstream>
 #include <string>
 #include "Framework\console.h"

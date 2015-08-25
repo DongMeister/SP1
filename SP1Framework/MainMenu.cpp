@@ -1,8 +1,7 @@
 #include "Framework\console.h"
 #include "game.h"
 #include "MainMenu.h"
-#include <iostream>
-#include <iomanip>
+
 #include <sstream>
 #include <fstream>
 #include <string>
