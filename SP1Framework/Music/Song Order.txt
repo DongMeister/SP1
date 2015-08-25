@@ -1,0 +1,15 @@
+﻿Sountrack lists
+--------------------
+BGM - Puppet (Ib)
+Monster Encounter - Clock (Ib)
+Monster Battle - Shudder (Mad Father)
+
+Optional
+--------------------
+Ending (Memory Route) - Memory (Mad Father)
+Ending (Curiosity Route) - Old Doll (Mad Father)
+Boss (Map 3) - Tension (Mad Father)
+Boss (Map 6.1/6.2) - Psychopath (Mad Father)
+
+Map 6.1 BGM - Departure (Ib)
+Map 6.2 BGM - Madness (Mad Father)
