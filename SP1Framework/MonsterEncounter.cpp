@@ -57,10 +57,11 @@ void ChanceEncounter()
 void displayBattleMenu()
 {
 	battleMONSTER(monsterAppear);
-	console.writeToBuffer(console.getConsoleSize().X/2 - 8, console.getConsoleSize().Y/2 + 3, "An enemy appeared!" , 0x06);
-	console.writeToBuffer(console.getConsoleSize().X/2 - 8, console.getConsoleSize().Y/2 + 4, "Will you:" , 0x06);
-	console.writeToBuffer(console.getConsoleSize().X/2 - 8, console.getConsoleSize().Y/2 + 5, "Fight? (1)" , 0x06);
-	console.writeToBuffer(console.getConsoleSize().X/2 - 8, console.getConsoleSize().Y/2 + 6, "Run? (2)" , 0x06);
+	int x = console.getConsoleSize().X/2 - 8;
+	console.writeToBuffer(x, console.getConsoleSize().Y/2 + 3, "An enemy appeared!" , 0x06);
+	console.writeToBuffer(x, console.getConsoleSize().Y/2 + 4, "Will you:" , 0x06);
+	console.writeToBuffer(x, console.getConsoleSize().Y/2 + 5, "Fight? (1)" , 0x06);
+	console.writeToBuffer(x, console.getConsoleSize().Y/2 + 6, "Run? (2)" , 0x06);
 }
 
 

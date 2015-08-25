@@ -38,7 +38,7 @@ void openMap(int i) // opens the map and overrides the 2d array WallPosition
 			 {
 				 if (line[i] == '#') // changes all # in the text file to char(177) which is a block
 				 {
-					 line[i] = 177;
+					 line[i] = char(177);
 				 }
 			 }
 			for (int x = 0;x<80;++x)
@@ -71,7 +71,6 @@ void openDoor() // checks for a switch (*) and opens a path corresponding to lev
 				DialogueIsRunning = true;
 				break;
 			case 3:
-
 				if (charLocation.X == 20 && charLocation.Y == 7 && Open[0] == false)
 				{
 					Open[0] = true;
@@ -106,7 +105,7 @@ void openDoor() // checks for a switch (*) and opens a path corresponding to lev
 				}
 				break;
 			case 4:
-				g_cWallPosition[28][22] = 177;
+				g_cWallPosition[28][22] = char(177);
 				g_cWallPosition[27][29] = ' '; 
 				g_cWallPosition[28][28] = ' ';
 				chat = 1;

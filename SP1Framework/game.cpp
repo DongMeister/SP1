@@ -57,7 +57,6 @@ void init()
 {
     // Set precision for floating point output
 	state = Menu;
-
 	srand(time(0));
     elapsedTime = 0.0;
 	charLocation.X = 0;
@@ -66,7 +65,8 @@ void init()
     // sets the width, height and the font name to use in the console
     console.setConsoleFont(0,16 , L"Asa");
 	MusicWillPlay(0);
-	opendialog();
+	LoadDialogue();
+
 }
 
 // Do your clean up of memory here
@@ -168,6 +168,7 @@ void update(double dt)
 void render()
 {
     clearScreen();      // clears the current screen and draw from scratch 
+
 	switch(state) // renders the game for each different state
 	{
 		case 0:
@@ -303,7 +304,7 @@ void renderDialogue()
 {
 	if (DialogueIsRunning == true)
 	{
-		dialoge(choosedialog(chat));
+		WriteDialogue(choosedialog(chat));
 		if (Dialogtime > 3)
 		{
 			Dialogtime = 0;

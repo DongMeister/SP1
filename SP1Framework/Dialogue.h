@@ -5,8 +5,8 @@
 #include <string>
 #include "Framework\console.h"
 
-void dialoge(std::string Stuff);
-void opendialog();
+void WriteDialogue(std::string Stuff);
+void LoadDialogue();
 std::string choosedialog(int i);
 
 extern Console console;
