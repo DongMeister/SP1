@@ -1,3 +1,6 @@
+#ifndef _OPENMOBS_H
+#define _OPENMOBS_H
+
 #include "Framework\console.h"
 #include <iostream>
 #include <iomanip>
@@ -7,3 +10,5 @@
 
 void battleMONSTER(int monsterAppear);
 void Died();
+
+#endif

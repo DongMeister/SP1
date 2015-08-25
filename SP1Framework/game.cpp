@@ -68,8 +68,6 @@ void init()
     console.setConsoleFont(0,16 , L"Asa");
 
 	opendialog();
-	
-
 }
 
 // Do your clean up of memory here

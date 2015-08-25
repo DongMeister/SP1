@@ -91,6 +91,7 @@ void CorrectKeypress()
 {
 	if (keyPressed[K_SPACE])
 	{
+		PlaySound(TEXT("Music/Clock.wav"), NULL, SND_FILENAME | SND_ASYNC);
 		state = InMaze;
 		battlePoints *= 10;
 		TotalBattlePoints += battlePoints;
@@ -111,6 +112,7 @@ void WrongKeypress()
 
 		else
 		{
+			PlaySound(TEXT("Music/Clock.wav"), NULL, SND_FILENAME | SND_ASYNC);
 			state = InMaze;
 		}
 	}

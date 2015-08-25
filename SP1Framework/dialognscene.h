@@ -1,3 +1,6 @@
+#ifndef _DIALOGNSCENE_H
+#define _DIALOGNSCENE_H
+
 #include <iostream>
 #include <fstream>
 #include <string>
@@ -8,3 +11,5 @@ void opendialog();
 std::string choosedialog(int i);
 
 extern Console console;
+
+#endif

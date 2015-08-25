@@ -1,3 +1,6 @@
+#ifndef _OPENMAP_H
+#define _OPENMAP_H
+
 #include "Framework\console.h"
 #include <iostream>
 #include <iomanip>
@@ -12,3 +15,5 @@ void restart();
 void openDoor();
 void checkAdvance();
 bool checkArray();
+
+#endif

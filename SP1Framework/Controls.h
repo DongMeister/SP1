@@ -1,3 +1,6 @@
+#ifndef _CONTROLS_H
+#define _CONTROLS_H
+
 #include <iostream>
 #include <string>
 #include "game.h"
@@ -14,3 +17,5 @@ void GameOverKeypress();
 void CorrectKeypress();
 void WrongKeypress();
 void ClearStageKeypress();
+
+#endif

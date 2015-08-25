@@ -21,9 +21,6 @@
 std::string Question; 
 std::string Answer[40];
 
-
-int MinChance = 0;
-
 int monsterAppear = 0;
 int Encounter = 0;
 const int MeetMonster = 100;
@@ -45,7 +42,7 @@ void ChanceEncounter()
 	//Chance to Encounter Monsters
 
 	monsterAppear = rand() % 8; //Chance of meeting different type of monsters
-	//Encounter = Encounter + rand() % 5 + 1; //Steps taken to encounter a monster
+	Encounter = Encounter + rand() % 5 + 1; //Steps taken to encounter a monster
 	
 	if (Encounter < 50)
 	{
@@ -68,7 +65,6 @@ void ChanceEncounter()
 		splashAnimate(level);
 		state = Animation; // change state to choose battle
 		Encounter = 0; // resets encounter chance to 0
-
 	}
 }
 
@@ -117,7 +113,6 @@ void displayBattle() // displays the battle options
 
 			console.writeToBuffer(console.getConsoleSize().X/2 - 33,console.getConsoleSize().Y/2+4+A, Answer[slot] + added, 0x06); // showing the answer in order
 		}
-		MinChance = 0;
 	}
 	else
 	{
@@ -140,13 +135,13 @@ void GameLost() // WE LOST
 
 void YouDidIt() // Question correctly answered display
 {
-
 	console.writeToBuffer(console.getConsoleSize().X/2 - 4, console.getConsoleSize().Y/2, "Correct!" , 0x0A);
 	console.writeToBuffer(console.getConsoleSize().X/2 - 13, console.getConsoleSize().Y/2 + 1, "(Press Space to continue)" , 0x0A);
 }
 
 void YouFailed() // Question answered is wrong
 {
+	PlaySound(NULL, NULL, 0);
 	if (MeterBar > 0)
 	{
 		console.writeToBuffer(console.getConsoleSize().X/2 - 12, console.getConsoleSize().Y/2, "WRONG! You lost 1 health" , 0x0C);
@@ -196,6 +191,7 @@ void chooseQn() // CHOOSE the question from the file
 
 void StageClear() // displays the points achieved in the stage
 {
+	PlaySound(NULL, NULL, 0);
 	console.writeToBuffer(console.getConsoleSize().X/2 - 8,console.getConsoleSize().Y/2 - 5, "Stage Clear!",0x0A);
 	std::ostringstream ss;
     ss << std::fixed << std::setprecision(0);

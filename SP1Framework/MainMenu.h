@@ -1,3 +1,6 @@
+#ifndef _MAINMENU_H
+#define _MAINMENU_H
+
 #include "Framework\console.h"
 #include "game.h"
 #include <iostream>
@@ -7,3 +10,5 @@
 #include <string>
 
 void menuLayout();
+
+#endif

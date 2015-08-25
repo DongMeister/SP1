@@ -14,7 +14,6 @@ extern Levels level;
 extern COORD charLocation;
 extern COORD starting;
 extern int MeterBar;
-extern int MinChance;
 extern double TotalPoints;
 extern double MazePoints;
 extern double TotalBattlePoints;
@@ -321,7 +320,6 @@ void restart() // restart all variables for a fresh start
 	level = lvl1;
 	charLocation = starting;
 	MeterBar = 5;
-	MinChance = 0;
 	MazePoints = 0;
 	TotalPoints = 0;
 	TotalBattlePoints = 0;
