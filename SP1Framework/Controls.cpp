@@ -13,16 +13,31 @@ extern double TotalPoints;
 extern double TotalBattlePoints;
 extern double battlePoints;
 extern Levels level;
+extern bool MenuPointer;
 
-void menuKeypress() // keys for the menu
+void ChooseBattleMenu()
 {
-	if (keyPressed[K_ONE])
+	if (keyPressed[K_UP])
 	{
-		MusicWillPlay(1);
-		state = InMaze;
-		openMap(0);
-		DialogueIsRunning = true;
-		chat = 0;
+		MenuPointer = true;
+	}
+	else if (keyPressed[K_DOWN])
+	{
+		MenuPointer = false;
+	}
+	else if (keyPressed[K_ENTER])
+	{
+		if (MenuPointer == true)
+		{
+			openMap(0);
+			state = InMaze;
+			DialogueIsRunning = true;
+			chat = 1;
+		}
+		else
+		{
+			g_quitGame = true;
+		}
 	}
 }
 

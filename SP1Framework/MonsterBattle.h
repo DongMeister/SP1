@@ -6,6 +6,7 @@ void displayBattleMenu();
 void displayBattle();
 void displayRun();
 void chooseQn();
+void LoadQn();
 
 
 #endif

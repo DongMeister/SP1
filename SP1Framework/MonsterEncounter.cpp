@@ -19,6 +19,7 @@ const int QuestionNos = 60;
 
 std::string Question; 
 std::string Answer[QuestionNos];
+std::string Questions_Answers_Holder[QuestionNos*5];
 
 int monsterAppear = 0;
 int Encounter = 0;
@@ -44,7 +45,7 @@ void ChanceEncounter()
 	if (Encounter >= MeetMonster)
 	{
 		MusicWillPlay(2);
-		chooseQn(); // selects questions from text file
+		chooseQn(); // selects questions from array
 		RandomizeAnswers(); // shuffles up the answers for the question
 		splashAnimate(level);
 		state = Animation; // change state to choose battle
@@ -114,13 +115,13 @@ void GameLost() // WE LOST
     console.writeToBuffer(console.getConsoleSize().X/2 - 7,console.getConsoleSize().Y/2 + 7, ss.str(),0x0C);
 }
 
-void YouDidIt() // Question correctly answered display
+void DisplayCorrect() // Question correctly answered display
 {
 	console.writeToBuffer(console.getConsoleSize().X/2 - 4, console.getConsoleSize().Y/2, "Correct!" , 0x0A);
 	console.writeToBuffer(console.getConsoleSize().X/2 - 13, console.getConsoleSize().Y/2 + 1, "(Press Space to continue)" , 0x0A);
 }
 
-void YouFailed() // Question answered is wrong
+void DisplayFail() // Question answered is wrong
 {
 	if (MeterBar > 0)
 	{
@@ -134,40 +135,34 @@ void YouFailed() // Question answered is wrong
 	}
 }
 
-
-void chooseQn() // CHOOSE the question from the file
+void LoadQn()
 {
 	std::ifstream myfile ("GE.txt");
-	int n = (rand() % QuestionNos) * 5;
-	int o = 0;
-	int A = 1;
-	bool checkQ = false; // check whether question has been retrieved
 	std::string holder;
+	int o = 0;
 	if (myfile.is_open())
 	{
 		while ( getline (myfile, holder) )
 		{
-			if (checkQ == true && A < 5) // getting the next 4 lines as the answers
-			{
-				Answer[A] = holder;
-				++A;
-			}
-
-			if (o == n && checkQ == false) // if question has been retrieved and o == n, question will be retrieved
-			{
-				Question = holder;
-				checkQ = true;
-			}
-			else
-			{
-				++o;
-			}
-
-			
-
+			Questions_Answers_Holder[o] = holder;
+			++o;
 		}
 	}
 	myfile.close();
+}
+
+
+void chooseQn() // CHOOSE the question from the file
+{
+	int n = (rand() % QuestionNos) * 5;
+
+	Question = Questions_Answers_Holder[n];
+
+	for (int i = 1;i < 5;++i)
+	{
+		Answer[i] = Questions_Answers_Holder[n + i];
+	}
+
 }
 
 void StageClear() // displays the points achieved in the stage

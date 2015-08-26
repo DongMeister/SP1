@@ -3,8 +3,8 @@
 
 
 void ChanceEncounter();
-void YouDidIt();
-void YouFailed();
+void DisplayCorrect();
+void DisplayFail();
 void StageClear();
 void RandomizeAnswers();
 

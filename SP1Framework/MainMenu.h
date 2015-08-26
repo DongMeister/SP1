@@ -8,6 +8,8 @@
 #include <fstream>
 #include <string>
 
-void menuLayout();
+void OpenMenu();
+void renderMenu();
+void renderMenuPointer();
 
 #endif

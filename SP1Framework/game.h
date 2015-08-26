@@ -49,8 +49,8 @@ enum Keys
 	K_THREE,
 	K_FOUR,
 	K_SPACE,
+	K_ENTER,
     K_COUNT
-
 };
 
 

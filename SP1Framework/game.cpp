@@ -56,6 +56,7 @@ COORD starting;
 void init()
 {
     // Set precision for floating point output
+	OpenMenu();
 	state = Menu;
 	srand(time(0));
     elapsedTime = 0.0;
@@ -66,6 +67,7 @@ void init()
     console.setConsoleFont(0,16 , L"Asa");
 	MusicWillPlay(0);
 	LoadDialogue();
+	LoadQn();
 
 }
 
@@ -97,6 +99,7 @@ void getInput()
     keyPressed[K_THREE] = isKeyPressed(0x33);
 	keyPressed[K_FOUR] = isKeyPressed(0x34);
 	keyPressed[K_SPACE] = isKeyPressed(VK_SPACE);
+	keyPressed[K_ENTER] = isKeyPressed(0x0D);
 }
 
 /*
@@ -118,7 +121,7 @@ void update(double dt)
 	switch(state) //What state the game is in
 	{
 		case 0:
-			menuKeypress();
+			ChooseBattleMenu();
 			break;
 		case 1:
 			moveCharacter();
@@ -172,7 +175,7 @@ void render()
 	switch(state) // renders the game for each different state
 	{
 		case 0:
-			menuLayout();
+			renderMenu();
 			break;
 		case 1:
 			renderGame();
@@ -189,10 +192,10 @@ void render()
 			GameLost();
 			break;
 		case 6:
-			YouDidIt();
+			DisplayCorrect();
 			break;
 		case 7:
-			YouFailed();
+			DisplayFail();
 			break;
 		case 8:
 			StageClear();

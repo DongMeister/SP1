@@ -9,7 +9,8 @@
 #include "Dialogue.h"
 
 
-void menuKeypress();
+
+void ChooseBattleMenu();
 void ChooseBattleKeypress();
 void BattleKeypress();
 void GameOverKeypress();
