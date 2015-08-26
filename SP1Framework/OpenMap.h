@@ -15,5 +15,8 @@ void openDoor();
 void checkAdvance();
 void checkIfThereAreTraps();
 bool checkArray();
+void closeTraps();
+void shortcut();
+void openTraps();
 
 #endif

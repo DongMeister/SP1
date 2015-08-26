@@ -72,13 +72,12 @@ void checkIfThereAreTraps()
 
 	if (g_cWallPosition[charLocation.X][charLocation.Y] == 'O')
 	{
-		currentlevel = int(level);
+		currentlevel = level;
 		currentposition = charLocation;
 		level = TrapLevel;
 		openMap(9);
 		charLocation.X = 5;
 		charLocation.Y = 15;
-
 	}
 }
 
@@ -350,7 +349,6 @@ void checkAdvance() // check whether to advance to the next level
 	}
 	else if (level == 1)
 	{
-
 		if (charLocation.X == 79 && charLocation.Y == 15)
 			{
 				int a = int(level) + 1;
@@ -494,6 +492,17 @@ void checkAdvance() // check whether to advance to the next level
 			charLocation.Y = 26;
 		}
 	}
+	else if (level == 9)
+	{
+		if (charLocation.X == 74 && charLocation.Y == 15)
+		{
+				level = static_cast<Levels>(currentlevel);
+				openMap(currentlevel);
+				charLocation = currentposition;
+
+		}
+	}
+
 	openDoor();
 	openTraps();
 	closeTraps();
