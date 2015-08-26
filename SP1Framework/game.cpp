@@ -38,7 +38,7 @@ char   g_cWallPosition[80][30];
 bool   DialogueIsRunning = false;
 Levels level = lvl1;
 Screen state;
-std::string Maps[] = {"Map/Map1.txt","Map/Map2.txt","Map/Map3.txt", "Map/Map4.1_Nostalgia.txt", "Map/Map4.2_Frustration.txt", "Map/Map5.1_Reminiscence.txt", "Map/Map5.2_Static.txt", "Map/Map6.1_Euphoria.txt", "Map/Map6.2_Forgotten.txt"};
+std::string Maps[] = {"Map/Map1.txt","Map/Map2.txt","Map/Map3.txt", "Map/Map4.1_Nostalgia.txt", "Map/Map4.2_Frustration.txt", "Map/Map5.1_Reminiscence.txt", "Map/Map5.2_Static.txt", "Map/Map6.1_Euphoria.txt", "Map/Map6.2_Forgotten.txt","Map/TrapMap.txt"};
 std::string Monsters[] = {"Mobs/battleBAT.txt","Mobs/battleGOAT.txt","Mobs/battleGOBLIN.txt","Mobs/battleJESTER.txt","Mobs/battleSCORPION.txt","Mobs/battleSHADOW.txt","Mobs/battleSPIDER.txt","Mobs/battleSPIRIT.txt"};
 
 extern std::string Answer[5];
@@ -64,7 +64,7 @@ void init()
 	charLocation.Y = 15;
 	starting = charLocation;
     // sets the width, height and the font name to use in the console
-    console.setConsoleFont(0,16 , L"Asa");
+    console.setConsoleFont(10,20 , L"TheBestFont");
 	MusicWillPlay(0);
 	LoadDialogue();
 	LoadQn();

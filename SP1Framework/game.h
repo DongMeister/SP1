@@ -17,6 +17,7 @@ enum Levels
 	lvl52,
 	lvl61,
 	lvl62,
+	TrapLevel,
 	end
 };
 

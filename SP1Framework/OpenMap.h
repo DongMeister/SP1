@@ -13,6 +13,7 @@ void openMap(int i);
 void restart();
 void openDoor();
 void checkAdvance();
+void checkIfThereAreTraps();
 bool checkArray();
 
 #endif

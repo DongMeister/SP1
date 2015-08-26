@@ -2,6 +2,7 @@
 #include "OpenMap.h"
 #include "Framework\console.h"
 #include "MusicFiles.h"
+#include "HealthBar.h"
 
 #include <sstream>
 #include <fstream>
@@ -20,6 +21,9 @@ extern double TotalBattlePoints;
 extern std::string Maps[];
 extern bool DialogueIsRunning;
 extern int chat;
+
+int currentlevel;
+COORD currentposition;
 
 bool Open[4] = {false,false,false,false};
 
@@ -49,6 +53,33 @@ void openMap(int i) // opens the map and overrides the 2d array WallPosition
 		}
 	}
 	myfile.close();
+}
+
+void checkIfThereAreTraps()
+{
+	if (g_cWallPosition[charLocation.X][charLocation.Y] == '^')
+	{
+		if (MeterBar > 1)
+		{
+			--MeterBar;
+		}
+		
+		else
+		{
+			state = GameOver;
+		}
+	}
+
+	if (g_cWallPosition[charLocation.X][charLocation.Y] == 'O')
+	{
+		currentlevel = int(level);
+		currentposition = charLocation;
+		level = TrapLevel;
+		openMap(9);
+		charLocation.X = 5;
+		charLocation.Y = 15;
+
+	}
 }
 
 void openDoor() // checks for a switch (*) and opens a path corresponding to level
@@ -107,7 +138,6 @@ void openDoor() // checks for a switch (*) and opens a path corresponding to lev
 			case 4:
 				g_cWallPosition[28][22] = char(177);
 				g_cWallPosition[27][29] = ' '; 
-				g_cWallPosition[28][28] = ' ';
 				chat = 1;
 				DialogueIsRunning = true;
 				break;
@@ -135,6 +165,158 @@ void openDoor() // checks for a switch (*) and opens a path corresponding to lev
 	}
 }
 
+void openTraps()
+{
+		switch(level)
+		{
+			case 0:
+				break;
+			case 1:
+				break;
+			case 2:
+				if (charLocation.X == 40 && charLocation.Y == 18)
+				{
+					g_cWallPosition[39][15] = 'O';
+				}
+				break;
+			case 3:
+				if (charLocation.X == 63 && charLocation.Y == 28)
+				{
+					g_cWallPosition[68][27] = 'O';
+				}
+				if (charLocation.X == 78 && charLocation.Y == 16)
+				{
+					g_cWallPosition[66][14] = ' ';
+					g_cWallPosition[67][14] = ' ';
+					g_cWallPosition[68][14] = ' ';
+					g_cWallPosition[69][14] = ' ';
+					g_cWallPosition[70][14] = ' ';
+					g_cWallPosition[71][14] = ' ';
+					g_cWallPosition[72][14] = ' ';
+					g_cWallPosition[73][14] = ' ';
+					g_cWallPosition[74][14] = ' ';
+					g_cWallPosition[75][14] = ' ';
+					g_cWallPosition[76][14] = ' ';
+					g_cWallPosition[77][14] = ' ';
+					g_cWallPosition[78][15] = char(177);
+				}
+
+				break;
+			case 4:
+				if (g_cWallPosition[charLocation.X][charLocation.Y] == '*')
+				{
+					g_cWallPosition[28][28] = 'O';
+				}
+				break;
+			case 5:
+				if (charLocation.X == 37 && charLocation.Y == 11 || charLocation.X == 38 && charLocation.Y == 11 || charLocation.X == 39 && charLocation.Y == 11 )
+				{
+					g_cWallPosition[39][13] = char(177);
+					g_cWallPosition[40][13] = char(177);
+				}
+				if (charLocation.X == 22 && charLocation.Y == 14)
+				{
+					g_cWallPosition[20][16] = char(177);
+				}
+				if (charLocation.X == 48 && charLocation.Y == 18)
+				{
+					g_cWallPosition[48][19] = char(177);
+					g_cWallPosition[48][20] = char(177);
+					g_cWallPosition[49][18] = ' ';
+					g_cWallPosition[50][18] = ' ';
+					g_cWallPosition[51][18] = ' ';
+					g_cWallPosition[52][18] = ' ';
+					g_cWallPosition[53][18] = ' ';
+					g_cWallPosition[54][18] = ' ';
+					g_cWallPosition[55][18] = ' ';
+					g_cWallPosition[56][18] = ' ';
+					g_cWallPosition[57][18] = ' ';
+					g_cWallPosition[57][19] = ' ';
+				}
+				if (charLocation.X == 57 && charLocation.Y == 21)
+				{
+					g_cWallPosition[57][22] = char(177);
+					g_cWallPosition[57][23] = char(177);
+					g_cWallPosition[58][21] = ' ';
+					g_cWallPosition[59][21] = ' ';
+					g_cWallPosition[60][21] = ' ';
+					g_cWallPosition[61][21] = ' ';
+					g_cWallPosition[62][21] = ' ';
+					g_cWallPosition[63][21] = ' ';
+					g_cWallPosition[64][21] = ' ';
+				}
+				break;
+			case 6:
+				break;
+			case 7:
+				break;
+			case 8:
+				break;
+		}
+	
+}
+
+void closeTraps()
+{
+	if (g_cWallPosition[charLocation.X][charLocation.Y] == '*')
+	{
+		switch(level)
+		{
+			case 0:
+				break;
+			case 1:
+				g_cWallPosition[15][13] = ' ';
+				g_cWallPosition[15][17] = ' ';
+				break;
+			case 2:
+				break;
+			case 3:
+				break;
+			case 4:
+				break;
+			case 5:
+				break;
+			case 6:
+				break;
+			case 7:
+				break;
+			case 8:
+				break;
+		}
+	}
+}
+
+void shortcut()
+{
+	switch(level)
+		{
+			case 0:
+				break;
+			case 1:
+				break;
+			case 2:
+				break;
+			case 3:
+				if (charLocation.X == 78 && charLocation.Y == 10)
+				{
+					g_cWallPosition[78][11] = ' ';
+					g_cWallPosition[78][12] = ' ';
+					g_cWallPosition[78][13] = ' ';
+					g_cWallPosition[79][14] = ' ';
+				}
+				break;
+			case 4:
+				break;
+			case 5:
+				break;
+			case 6:
+				break;
+			case 7:
+				break;
+			case 8:
+				break;
+		}
+}
 bool checkArray()
 {
 	for (int i = 0;i < 4;++i)
@@ -168,6 +350,7 @@ void checkAdvance() // check whether to advance to the next level
 	}
 	else if (level == 1)
 	{
+
 		if (charLocation.X == 79 && charLocation.Y == 15)
 			{
 				int a = int(level) + 1;
@@ -234,7 +417,7 @@ void checkAdvance() // check whether to advance to the next level
 	}
 	else if (level == 4)
 	{
-		if (charLocation.X == 27 && charLocation.Y == 28)
+		if (charLocation.X == 27 && charLocation.Y == 29)
 		{
 			int a = int(level) + 2;
 			level = static_cast<Levels>(a);
@@ -280,7 +463,7 @@ void checkAdvance() // check whether to advance to the next level
 				TotalPoints = TotalPoints + MazePoints;
 			}
 			charLocation.X = 0;
-			charLocation.Y = 9;
+			charLocation.Y = 26;
 		}
 	}
 	else if (level == 7)
@@ -312,6 +495,10 @@ void checkAdvance() // check whether to advance to the next level
 		}
 	}
 	openDoor();
+	openTraps();
+	closeTraps();
+	shortcut();
+	checkIfThereAreTraps();
 }
 
 void restart() // restart all variables for a fresh start
