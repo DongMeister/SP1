@@ -43,10 +43,10 @@ void renderMenuPointer()
 {
 	if (MenuPointer == true)
 	{
-		console.writeToBuffer(42,16,"< ENTER",0x0F);
+		console.writeToBuffer(42,16,"<<",0x0F);
 	}
 	else
 	{
-		console.writeToBuffer(42,20,"< ENTER",0x0F);
+		console.writeToBuffer(42,20,"<<",0x0F);
 	}
 }

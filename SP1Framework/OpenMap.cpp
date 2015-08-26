@@ -55,7 +55,7 @@ void openDoor() // checks for a switch (*) and opens a path corresponding to lev
 {
 	if (g_cWallPosition[charLocation.X][charLocation.Y] == '*')
 	{
-
+		Beep(1500,50);
 		switch(level)
 		{
 			case 0:

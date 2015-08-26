@@ -29,6 +29,7 @@ void ChooseBattleMenu()
 	{
 		if (MenuPointer == true)
 		{
+			MusicWillPlay(1);
 			openMap(0);
 			state = InMaze;
 			DialogueIsRunning = true;

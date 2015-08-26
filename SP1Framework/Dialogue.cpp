@@ -2,7 +2,7 @@
 
 std::string dialog[10];
 
-std::string Text[] = {"So many walls...But I see an exit","Something opened in the distance","Nothing happened...I feel like pressing more though","That's two","That's the third one","The last one...Something opened in the distance"};
+std::string Text[] = {"So many walls...But I see an exit","Something opened in the distance","Nothing happened...I feel like pressing more though","That's the second switch, I wonder what will happen","That's the third one","The last one...Something opened in the distance"};
 
 
 void WriteDialogue(std::string Stuff)
