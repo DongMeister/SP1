@@ -14,6 +14,8 @@ extern double TotalBattlePoints;
 extern double battlePoints;
 extern Levels level;
 extern bool MenuPointer;
+extern bool DialogueIsRunning;
+extern double debounce;
 
 void ChooseBattleMenu()
 {
@@ -29,11 +31,9 @@ void ChooseBattleMenu()
 	{
 		if (MenuPointer == true)
 		{
-			MusicWillPlay(1);
-			openMap(0);
-			state = InMaze;
-			DialogueIsRunning = true;
-			chat = 1;
+			state = Scene;
+			CutsceneDialog();
+			debounce = 0;
 		}
 		else
 		{
@@ -42,10 +42,29 @@ void ChooseBattleMenu()
 	}
 }
 
+void SkipCutsceneIfSpaceIsPressed()
+{
+	if (keyPressed[K_ENTER])
+	{
+		if (debounce > 0.225)
+		{
+			debounce = 0;
+			state = InMaze;
+			openMap(level);
+			if (level == lvl1)
+			{
+				DialogueIsRunning = true;
+			}
+		}
+	}
+	
+}
+
 void ChooseBattleKeypress()
 {
 	if (keyPressed[K_ONE])
 	{
+		debounce = 0;
 		state = Battle;
 	}
 	if (keyPressed[K_TWO])
@@ -76,46 +95,49 @@ void ChooseBattleKeypress()
 
 void BattleKeypress()
 {
-	if (keyPressed[K_UP])
+	if (debounce > 0.225)
 	{
-		if (Answer[1] == Answer[4]) // Answer[4] is used as a checker for the correct answer
+		if (keyPressed[K_ONE])
 		{
-			MusicWillPlay(9);
-			state = Correct;
-			PlusHealthMeter();
+			if (Answer[1] == Answer[4]) // Answer[4] is used as a checker for the correct answer
+			{
+				MusicWillPlay(9);
+				state = Correct;
+				PlusHealthMeter();
+			}
+			else
+			{
+				state = Wrong;
+				MeterBar--;
+			}
 		}
-		else
+		if (keyPressed[K_TWO])
 		{
-			state = Wrong;
-			MeterBar--;
+			if (Answer[2] == Answer[4])
+			{
+				MusicWillPlay(9);
+				state = Correct;
+				PlusHealthMeter();
+			}
+			else
+			{
+				state = Wrong;
+				MeterBar--;
+			}
 		}
-	}
-	if (keyPressed[K_LEFT])
-	{
-		if (Answer[2] == Answer[4])
+		if (keyPressed[K_THREE])
 		{
-			MusicWillPlay(9);
-			state = Correct;
-			PlusHealthMeter();
-		}
-		else
-		{
-			state = Wrong;
-			MeterBar--;
-		}
-	}
-	if (keyPressed[K_RIGHT])
-	{
-		if (Answer[3] == Answer[4])
-		{
-			MusicWillPlay(9);
-			state = Correct;
-			PlusHealthMeter();
-		}
-		else
-		{
-			state = Wrong;
-			MeterBar--;
+			if (Answer[3] == Answer[4])
+			{
+				MusicWillPlay(9);
+				state = Correct;
+				PlusHealthMeter();
+			}
+			else
+			{
+				state = Wrong;
+				MeterBar--;
+			}
 		}
 	}
 }

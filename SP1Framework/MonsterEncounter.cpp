@@ -82,15 +82,15 @@ void displayBattle() // displays the battle options
 			std::string added;
 			if (A == 1)
 			{
-				added = "(Up arrow)";
+				added = "(1)";
 			}
 			else if (A == 2)
 			{
-				added = "(Left arrow)";
+				added = "(2)";
 			}
 			else if (A == 3)
 			{
-				added = "(Right arrow)";
+				added = "(3)";
 			}
 
 			console.writeToBuffer(console.getConsoleSize().X/2 - 33,console.getConsoleSize().Y/2+4+A, Answer[A] + added, 0x06); // showing the answer in order

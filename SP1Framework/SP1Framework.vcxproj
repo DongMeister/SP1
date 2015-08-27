@@ -76,6 +76,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Controls.cpp" />
+    <ClCompile Include="Cutscene.cpp" />
     <ClCompile Include="Dialogue.cpp" />
     <ClCompile Include="Framework\console.cpp" />
     <ClCompile Include="Framework\timer.cpp" />
@@ -93,6 +94,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Controls.h" />
+    <ClInclude Include="Cutscene.h" />
     <ClInclude Include="Dialogue.h" />
     <ClInclude Include="Framework\console.h" />
     <ClInclude Include="Framework\timer.h" />

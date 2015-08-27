@@ -15,6 +15,7 @@
 #include "Controls.h"
 #include "MusicFiles.h"
 #include "IndicationOfNearbyMonsterThruColour.h"
+#include "Cutscene.h"
 
 #include <sstream>
 #include <fstream>
@@ -26,6 +27,8 @@ Console console(80, 30, "SP1 Framework");
 
 int chat = 0;
 
+double debounce = 0;
+
 double elapsedTime;
 double deltaTime;
 double battlePoints = 15; // Countdown timer when answering question
@@ -33,6 +36,9 @@ double MazePoints = 0; // Timer in-maze
 double TotalPoints = 0; // Displayed after completing a level
 double TotalBattlePoints = 0; // Total Points achieved throughout
 double Dialogtime = 0; // countdown for dialog time
+double CutsceneTimer = 0; // Amount of time cutscene lasts
+double CutsceneCharTimer = 0; 
+double CutsceneDialogTimer = 0;
 bool   keyPressed[K_COUNT];
 char   g_cWallPosition[80][30];
 bool   DialogueIsRunning = false;
@@ -40,6 +46,8 @@ Levels level = lvl1;
 Screen state;
 std::string Maps[] = {"Map/Map1.txt","Map/Map2.txt","Map/Map3.txt", "Map/Map4.1_Nostalgia.txt", "Map/Map4.2_Frustration.txt", "Map/Map5.1_Reminiscence.txt", "Map/Map5.2_Static.txt", "Map/Map6.1_Euphoria.txt", "Map/Map6.2_Forgotten.txt","Map/TrapMap.txt"};
 std::string Monsters[] = {"Mobs/battleBAT.txt","Mobs/battleGOAT.txt","Mobs/battleGOBLIN.txt","Mobs/battleJESTER.txt","Mobs/battleSCORPION.txt","Mobs/battleSHADOW.txt","Mobs/battleSPIDER.txt","Mobs/battleSPIRIT.txt"};
+std::string Cutscenes[] = {"Cutscene/Intro.txt", "Cutscene/Cutscene-BeforeMap2(1).txt", "Cutscene/Cutscene-BeforeMap3(1).txt", "Cutscene/Cutscene_BeforeMap4.1(1).txt", "Cutscene/Cutscene_BeforeMap4.2(1).txt", "Cutscene/Cutscene_BeforeMap5.1(1).txt", "Cutscene/Cutscene_BeforeMap5.2(1).txt", "Cutscene/Cutscene_BeforeMap6.1(1)", "Cutscene/Cutscene_BeforeMap6.2(1).txt" , "Cutscene/Cutscene_EndingMemoryRoute(1).txt" , "Cutscene/Cutscene_EndingCuriosityRoute(1).txt"};
+std::string BeforeBossDialog[] = {"Cutscene/Cutscene-BeforeMap1(1).txt", "Cutscene/Cutscene-BEFOREBossMap3(1).txt", "Cutscene/Cutscene-AFTERBossMap3(1).txt", "Cutscene/Cutscene_BEFOREBossMap6.1(1).txt", "Cutscene/Cutscene-AFTERBossMap6.1(1).txt", "Cutscene/Cutscene_BEFOREBossMap6.2(1).txt"};
 
 extern std::string Answer[5];
 extern int MeterBar;
@@ -67,6 +75,8 @@ void init()
     console.setConsoleFont(10,20 , L"TheBestFont");
 	MusicWillPlay(0);
 	LoadDialogue();
+	loadCutscene();
+	LoadCutsceneDialogue();
 	LoadQn();
 
 }
@@ -118,6 +128,8 @@ void update(double dt)
     elapsedTime += dt;
     deltaTime = dt;
 
+	debounce += dt;
+
 	switch(state) //What state the game is in
 	{
 		case 0:
@@ -139,6 +151,10 @@ void update(double dt)
 			battlePoints -= dt; // update timer in-battle
 			break;
 		case 4:
+			SkipCutsceneIfSpaceIsPressed();
+			CutsceneTimer += dt;
+			CutsceneCharTimer += dt;
+			CutsceneDialogTimer += dt;
 			break;
 		case 5:
 			GameOverKeypress();
@@ -187,6 +203,7 @@ void render()
 			displayBattle();
 			break;
 		case 4:
+			renderCutscene();
 			break;
 		case 5:
 			GameLost();

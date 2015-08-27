@@ -185,18 +185,10 @@ void openTraps()
 				}
 				if (charLocation.X == 78 && charLocation.Y == 16)
 				{
-					g_cWallPosition[66][14] = ' ';
-					g_cWallPosition[67][14] = ' ';
-					g_cWallPosition[68][14] = ' ';
-					g_cWallPosition[69][14] = ' ';
-					g_cWallPosition[70][14] = ' ';
-					g_cWallPosition[71][14] = ' ';
-					g_cWallPosition[72][14] = ' ';
-					g_cWallPosition[73][14] = ' ';
-					g_cWallPosition[74][14] = ' ';
-					g_cWallPosition[75][14] = ' ';
-					g_cWallPosition[76][14] = ' ';
-					g_cWallPosition[77][14] = ' ';
+					for (int x = 66;x <= 77;++x)
+					{
+						g_cWallPosition[x][15] = ' ';
+					}
 					g_cWallPosition[78][15] = char(177);
 				}
 
@@ -221,28 +213,20 @@ void openTraps()
 				{
 					g_cWallPosition[48][19] = char(177);
 					g_cWallPosition[48][20] = char(177);
-					g_cWallPosition[49][18] = ' ';
-					g_cWallPosition[50][18] = ' ';
-					g_cWallPosition[51][18] = ' ';
-					g_cWallPosition[52][18] = ' ';
-					g_cWallPosition[53][18] = ' ';
-					g_cWallPosition[54][18] = ' ';
-					g_cWallPosition[55][18] = ' ';
-					g_cWallPosition[56][18] = ' ';
-					g_cWallPosition[57][18] = ' ';
+					for (int x = 49;x <= 57;++x)
+					{
+						g_cWallPosition[x][18] = ' ';
+					}
 					g_cWallPosition[57][19] = ' ';
 				}
 				if (charLocation.X == 57 && charLocation.Y == 21)
 				{
 					g_cWallPosition[57][22] = char(177);
 					g_cWallPosition[57][23] = char(177);
-					g_cWallPosition[58][21] = ' ';
-					g_cWallPosition[59][21] = ' ';
-					g_cWallPosition[60][21] = ' ';
-					g_cWallPosition[61][21] = ' ';
-					g_cWallPosition[62][21] = ' ';
-					g_cWallPosition[63][21] = ' ';
-					g_cWallPosition[64][21] = ' ';
+					for (int x = 58;x <= 64;++x)
+					{
+						g_cWallPosition[x][21] = ' ';
+					}
 				}
 				break;
 			case 6:
@@ -513,6 +497,7 @@ void checkAdvance() // check whether to advance to the next level
 void restart() // restart all variables for a fresh start
 {
 	level = lvl1;
+	chat = 0;
 	charLocation = starting;
 	MeterBar = 5;
 	MazePoints = 0;

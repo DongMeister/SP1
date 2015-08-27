@@ -7,6 +7,7 @@
 #include "MainMenu.h"
 #include "OpenMap.h"
 #include "Dialogue.h"
+#include "Cutscene.h"
 
 
 
@@ -17,5 +18,6 @@ void GameOverKeypress();
 void CorrectKeypress();
 void WrongKeypress();
 void ClearStageKeypress();
+void SkipCutsceneIfSpaceIsPressed();
 
 #endif
