@@ -17,6 +17,8 @@ extern bool MenuPointer;
 extern bool DialogueIsRunning;
 extern double debounce;
 
+extern int Encounter;
+
 void ChooseBattleMenu()
 {
 	if (keyPressed[K_UP])
@@ -216,6 +218,7 @@ void WrongKeypress()
 			}
 
 			state = InMaze;
+			battlePoints = 15;
 		}
 	}
 }
@@ -247,5 +250,6 @@ void ClearStageKeypress()
 		state = InMaze;
 		MazePoints = 0;
 		TotalBattlePoints = 0;
+		Encounter = 0;
 	}
 }

@@ -99,6 +99,7 @@ void displayBattle() // displays the battle options
 	else
 	{
 		state = Wrong;
+		MeterBar--;
 		battlePoints = 15; // if battle points timer is 0 or less, you got the answer wrong and timer is reset back to 15s
 	}
 }
