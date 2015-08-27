@@ -188,14 +188,6 @@ void openTraps()
 				{
 					g_cWallPosition[68][27] = 'O';
 				}
-				if (charLocation.X == 78 && charLocation.Y == 16)
-				{
-					for (int x = 66;x <= 77;++x)
-					{
-						g_cWallPosition[x][15] = ' ';
-					}
-					g_cWallPosition[78][15] = char(177);
-				}
 				if (charLocation.X == 50 && charLocation.Y == 14)
 				{
 					g_cWallPosition[50][16] = 'O';
@@ -347,7 +339,6 @@ void openPath()
 				}
 				break;
 			case 4:
-
 				break;
 			case 5:
 				break;
