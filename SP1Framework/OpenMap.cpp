@@ -26,8 +26,6 @@ int currentlevel;
 COORD currentposition;
 
 bool Open[4] = {false,false,false,false};
-bool Open61[1] = {false};
-bool Open62[1] = {false};
 
 
 void openMap(int i) // opens the map and overrides the 2d array WallPosition
@@ -370,14 +368,10 @@ void openPath()
 				}
 				if (charLocation.X == 52 && charLocation.Y == 5)
 				{
-					g_cWallPosition[53][5] = char(177);
-					g_cWallPosition[54][5] = char(177);
-					g_cWallPosition[55][5] = char(177);
-					g_cWallPosition[56][5] = char(177);
-					g_cWallPosition[57][5] = char(177);
-					g_cWallPosition[58][5] = char(177);
-					g_cWallPosition[59][5] = char(177);
-					g_cWallPosition[60][5] = char(177);
+					for ( int X = 53; X <= 61; X++)
+					{
+						g_cWallPosition[X][5] = char(177);
+					}
 					g_cWallPosition[61][4] = ' ';
 				}
 				if (charLocation.X == 60 && charLocation.Y == 7)
