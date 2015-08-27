@@ -85,7 +85,7 @@
     <ClCompile Include="IndicationOfNearbyMonsterThruColour.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MainMenu.cpp" />
-    <ClCompile Include="MobFight.cpp" />
+    <ClCompile Include="OpenMobs.cpp" />
     <ClCompile Include="MonsterEncounter.cpp" />
     <ClCompile Include="MusicFiles.cpp" />
     <ClCompile Include="OpenMap.cpp" />
