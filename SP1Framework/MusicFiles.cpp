@@ -4,5 +4,5 @@ std::wstring MusicFiles[] = {L"Music/Clock.wav", L"Music/Puppet.wav", L"Music/Sh
 
 void MusicWillPlay(int ChooseMusic)
 {
-	PlaySound(MusicFiles[ChooseMusic].c_str(), NULL, SND_FILENAME | SND_ASYNC);
+	PlaySound(MusicFiles[ChooseMusic].c_str(), NULL, SND_FILENAME | SND_ASYNC | SND_LOOP);
 }

@@ -36,7 +36,7 @@ void AnimateOne()
 	{
 		for (unsigned int x = 0;x < 80;++x)
 		{
-			console.writeToBuffer( x, y, g_cAnimatePosition[x][y] , 0x06);
+			console.writeToBuffer( x, y, g_cAnimatePosition[x][y] , 0x08);
 		}
 	}
 

@@ -53,13 +53,33 @@ void SkipCutsceneIfSpaceIsPressed()
 			debounce = 0;
 			state = InMaze;
 			openMap(level);
+
 			if (level == lvl1)
 			{
 				DialogueIsRunning = true;
 			}
 		}
 	}
-	
+
+	if (level == lvl3)
+		{
+			MusicWillPlay(3);
+		}
+
+	else if (level == lvl61)
+		{
+			MusicWillPlay(4);
+		}
+
+	else if(level == lvl62)
+		{
+			MusicWillPlay(5);
+		}
+
+	else
+		{
+			MusicWillPlay(1);
+		}
 }
 
 void ChooseBattleKeypress()
@@ -227,29 +247,11 @@ void ClearStageKeypress()
 {
 	if (keyPressed[K_SPACE])
 	{
-		if (level == lvl3)
-		{
-			MusicWillPlay(3);
-		}
-
-		else if (level == lvl61)
-		{
-			MusicWillPlay(4);
-		}
-
-		else if(level == lvl62)
-		{
-			MusicWillPlay(5);
-		}
-
-		else
-		{
-			MusicWillPlay(1);
-		}
-
-		state = InMaze;
 		MazePoints = 0;
 		TotalBattlePoints = 0;
 		Encounter = 0;
+		state = Scene;
+		CutsceneDialog();
+		MusicWillPlay(0);
 	}
 }

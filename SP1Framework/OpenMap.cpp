@@ -3,6 +3,7 @@
 #include "Framework\console.h"
 #include "MusicFiles.h"
 #include "HealthBar.h"
+#include "Cutscene.h"
 
 #include <sstream>
 #include <fstream>
@@ -65,6 +66,7 @@ void checkIfThereAreTraps()
 		
 		else
 		{
+			MusicWillPlay(10);
 			state = GameOver;
 		}
 	}
@@ -566,7 +568,6 @@ void checkAdvance() // check whether to advance to the next level
 				level = static_cast<Levels>(currentlevel);
 				openMap(currentlevel);
 				charLocation = currentposition;
-
 		}
 	}
 

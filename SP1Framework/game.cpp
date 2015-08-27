@@ -298,7 +298,7 @@ void renderMap()
 	{
 		for (int x = 0;x < 80;++x)
 		{
-			console.writeToBuffer( x, y, g_cWallPosition[x][y] , 0x06);
+			console.writeToBuffer( x, y, g_cWallPosition[x][y] , 0x08);
 		}
 	}	
 }

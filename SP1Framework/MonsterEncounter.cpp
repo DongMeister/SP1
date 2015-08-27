@@ -40,7 +40,7 @@ void ChanceEncounter()
 	//Chance to Encounter Monsters
 
 	monsterAppear = rand() % 8; //Chance of meeting different type of monsters
-	Encounter = Encounter + rand() % 5 + 1; //Steps taken to encounter a monster
+	//Encounter = Encounter + rand() % 5 + 1; //Steps taken to encounter a monster
 	
 	if (Encounter >= MeetMonster)
 	{
@@ -74,7 +74,7 @@ void displayBattle() // displays the battle options
 		std::ostringstream ss;
 		ss << std::fixed << std::setprecision(0);
 		ss << battlePoints << "secs remaining";
-		console.writeToBuffer(0,1,ss.str(),0x09);
+		console.writeToBuffer(0,1,ss.str(),0x0B);
 		console.writeToBuffer(console.getConsoleSize().X/2 - Question.length()/2, console.getConsoleSize().Y/2 + 3, Question, 0x06); // displays the question
 
 		for (int A = 1;A < 4;++A)
