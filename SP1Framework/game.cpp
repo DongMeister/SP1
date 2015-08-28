@@ -222,7 +222,6 @@ void render()
 		case 9:
 			AnimateOne();
 			break;
-
 	}
     //renderFramerate();  // renders debug information, frame rate, elapsed time, etc
     renderToScreen();   // dump the contents of the buffer to the screen, one frame worth of game
@@ -276,10 +275,7 @@ void moveCharacter()
 		{
 				DialogueIsRunning = false;
 		}
-
 	}
-	
-
 }
 
 void processUserInput()
@@ -301,9 +297,7 @@ void renderMap()
 	{
 		for (int x = 0;x < 80;++x)
 		{
-<<<<<<< ea58eb1b679838d091c1d18435341198254a0e1a
 			console.writeToBuffer( x, y, g_cWallPosition[x][y] , 0x08);
-=======
 			if (g_cWallPosition[x][y] == '^')
 			{
 				console.writeToBuffer( x, y, g_cWallPosition[x][y] , 0x0C);
@@ -320,7 +314,6 @@ void renderMap()
 			{
 				console.writeToBuffer( x, y, g_cWallPosition[x][y] , 0x0F);
 			}
->>>>>>> 2ced59229503807e454b196ee2c071d41f2a23da
 		}
 	}	
 }

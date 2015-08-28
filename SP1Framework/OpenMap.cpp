@@ -46,14 +46,6 @@ void openMap(int i) // opens the map and overrides the 2d array WallPosition
 				 {
 					 line[i] = char(177);
 				 }
-				 else if (line[i] == '^')
-				 {
-					 line[i] = char(94);
-				 }
-				 else if (line[i] == 'O')
-				 {
-					 line[i] = char(79);
-				 }
 			 }
 			for (int x = 0;x<80;++x)
 			{
@@ -64,35 +56,6 @@ void openMap(int i) // opens the map and overrides the 2d array WallPosition
 	}
 	myfile.close();
 }
-<<<<<<< ea58eb1b679838d091c1d18435341198254a0e1a
-void checkIfThereAreTraps()
-{
-	if (g_cWallPosition[charLocation.X][charLocation.Y] == '^')
-	{
-		if (MeterBar > 1)
-		{
-			--MeterBar;
-		}
-		
-		else
-		{
-			state = GameOver;
-		}
-	}
-
-	if (g_cWallPosition[charLocation.X][charLocation.Y] == 'O')
-	{
-		currentlevel = level;
-		currentposition = charLocation;
-		level = TrapLevel;
-		openMap(9);
-		charLocation.X = 5;
-		charLocation.Y = 15;
-	}
-}
-
-=======
->>>>>>> 2ced59229503807e454b196ee2c071d41f2a23da
 void openDoor() // checks for a switch (*) and opens a path corresponding to level
 {
 	if (g_cWallPosition[charLocation.X][charLocation.Y] == '*')
@@ -175,173 +138,6 @@ void openDoor() // checks for a switch (*) and opens a path corresponding to lev
 		}
 	}
 }
-<<<<<<< ea58eb1b679838d091c1d18435341198254a0e1a
-
-void openTraps()
-{
-		switch(level)
-		{
-			case 0:
-				break;
-			case 1:
-				break;
-			case 2:
-				if (charLocation.X == 40 && charLocation.Y == 18)
-				{
-					g_cWallPosition[39][15] = 'O';
-				}
-				break;
-			case 3:
-				if (charLocation.X == 63 && charLocation.Y == 28)
-				{
-					g_cWallPosition[68][27] = 'O';
-				}
-				if (charLocation.X == 78 && charLocation.Y == 16)
-				{
-					for (int x = 66;x <= 77;++x)
-					{
-						g_cWallPosition[x][15] = ' ';
-					}
-					g_cWallPosition[78][15] = char(177);
-				}
-
-				break;
-			case 4:
-				if (g_cWallPosition[charLocation.X][charLocation.Y] == '*')
-				{
-					g_cWallPosition[28][28] = 'O';
-				}
-				break;
-			case 5:
-				if (charLocation.X == 37 && charLocation.Y == 11 || charLocation.X == 38 && charLocation.Y == 11 || charLocation.X == 39 && charLocation.Y == 11 )
-				{
-					g_cWallPosition[39][13] = char(177);
-					g_cWallPosition[40][13] = char(177);
-				}
-				if (charLocation.X == 22 && charLocation.Y == 14)
-				{
-					g_cWallPosition[20][16] = char(177);
-				}
-				if (charLocation.X == 48 && charLocation.Y == 18)
-				{
-					g_cWallPosition[48][19] = char(177);
-					g_cWallPosition[48][20] = char(177);
-					for (int x = 49;x <= 57;++x)
-					{
-						g_cWallPosition[x][18] = ' ';
-					}
-					g_cWallPosition[57][19] = ' ';
-				}
-				if (charLocation.X == 57 && charLocation.Y == 21)
-				{
-					g_cWallPosition[57][22] = char(177);
-					g_cWallPosition[57][23] = char(177);
-					for (int x = 58;x <= 64;++x)
-					{
-						g_cWallPosition[x][21] = ' ';
-					}
-				}
-				break;
-			case 6:
-				break;
-			case 7:
-				break;
-			case 8:
-				break;
-		}
-	
-}
-
-void closeTraps()
-{
-	if (g_cWallPosition[charLocation.X][charLocation.Y] == '*')
-	{
-		switch(level)
-		{
-			case 0:
-				break;
-			case 1:
-				g_cWallPosition[15][13] = ' ';
-				g_cWallPosition[15][17] = ' ';
-				break;
-			case 2:
-				break;
-			case 3:
-				break;
-			case 4:
-				break;
-			case 5:
-				break;
-			case 6:
-				break;
-			case 7:
-				break;
-			case 8:
-				break;
-		}
-	}
-}
-
-void shortcut()
-{
-	switch(level)
-		{
-			case 0:
-				break;
-			case 1:
-				break;
-			case 2:
-				break;
-			case 3:
-				if (charLocation.X == 78 && charLocation.Y == 10)
-				{
-					g_cWallPosition[78][11] = ' ';
-					g_cWallPosition[78][12] = ' ';
-					g_cWallPosition[78][13] = ' ';
-					g_cWallPosition[79][14] = ' ';
-				}
-				break;
-			case 4:
-				break;
-			case 5:
-				break;
-			case 6:
-				if (charLocation.X == 15 && charLocation.Y == 5)
-				{
-					g_cWallPosition[15][6] = ' ';
-				}
-				if (charLocation.X == 14 && charLocation.Y == 28)
-				{
-					g_cWallPosition[15][28] = ' ';
-					g_cWallPosition[16][28] = ' ';
-					g_cWallPosition[17][28] = ' ';
-				}
-				if (charLocation.X == 14 && charLocation.Y == 18)
-				{
-					g_cWallPosition[14][19] = ' ';
-				}
-				if (charLocation.X == 52 && charLocation.Y == 5)
-				{
-					for ( int X = 53; X <= 61; X++)
-					{
-						g_cWallPosition[X][5] = char(177);
-					}
-					g_cWallPosition[61][4] = ' ';
-				}
-				if (charLocation.X == 60 && charLocation.Y == 7)
-				{
-					g_cWallPosition[61][7] = ' ';
-					g_cWallPosition[62][7] = ' ';
-				}
-				break;
-			case 7:
-				break;
-			case 8:
-				break;
-		}
-}
-=======
->>>>>>> 2ced59229503807e454b196ee2c071d41f2a23da
 bool checkArray()
 {
 	for (int i = 0;i < 4;++i)
@@ -532,7 +328,7 @@ void checkAdvance() // check whether to advance to the next level
 	openDoor();
 	openTraps();
 	closeTraps();
-	shortcut();
+	openPath();
 	checkIfThereAreTraps();
 }
 
