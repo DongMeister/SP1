@@ -3,6 +3,7 @@
 #include "Framework\console.h"
 #include "MusicFiles.h"
 #include "HealthBar.h"
+#include "Traps.h"
 
 #include <sstream>
 #include <fstream>
@@ -22,8 +23,9 @@ extern std::string Maps[];
 extern bool DialogueIsRunning;
 extern int chat;
 
-int currentlevel;
-COORD currentposition;
+extern int currentlevel;
+extern COORD currentposition;
+
 
 bool Open[4] = {false,false,false,false};
 
@@ -44,6 +46,14 @@ void openMap(int i) // opens the map and overrides the 2d array WallPosition
 				 {
 					 line[i] = char(177);
 				 }
+				 else if (line[i] == '^')
+				 {
+					 line[i] = char(94);
+				 }
+				 else if (line[i] == 'O')
+				 {
+					 line[i] = char(79);
+				 }
 			 }
 			for (int x = 0;x<80;++x)
 			{
@@ -54,6 +64,7 @@ void openMap(int i) // opens the map and overrides the 2d array WallPosition
 	}
 	myfile.close();
 }
+<<<<<<< ea58eb1b679838d091c1d18435341198254a0e1a
 void checkIfThereAreTraps()
 {
 	if (g_cWallPosition[charLocation.X][charLocation.Y] == '^')
@@ -80,6 +91,8 @@ void checkIfThereAreTraps()
 	}
 }
 
+=======
+>>>>>>> 2ced59229503807e454b196ee2c071d41f2a23da
 void openDoor() // checks for a switch (*) and opens a path corresponding to level
 {
 	if (g_cWallPosition[charLocation.X][charLocation.Y] == '*')
@@ -162,6 +175,7 @@ void openDoor() // checks for a switch (*) and opens a path corresponding to lev
 		}
 	}
 }
+<<<<<<< ea58eb1b679838d091c1d18435341198254a0e1a
 
 void openTraps()
 {
@@ -326,6 +340,8 @@ void shortcut()
 				break;
 		}
 }
+=======
+>>>>>>> 2ced59229503807e454b196ee2c071d41f2a23da
 bool checkArray()
 {
 	for (int i = 0;i < 4;++i)
@@ -504,7 +520,7 @@ void checkAdvance() // check whether to advance to the next level
 	}
 	else if (level == 9)
 	{
-		if (charLocation.X == 74 && charLocation.Y == 15)
+		if (charLocation.X == 79 && charLocation.Y == 15)
 		{
 				level = static_cast<Levels>(currentlevel);
 				openMap(currentlevel);

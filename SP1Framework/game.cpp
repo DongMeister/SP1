@@ -16,6 +16,7 @@
 #include "MusicFiles.h"
 #include "IndicationOfNearbyMonsterThruColour.h"
 #include "Cutscene.h"
+#include "Traps.h"
 
 #include <sstream>
 #include <fstream>
@@ -89,6 +90,7 @@ void shutdown()
 	colour(FOREGROUND_BLUE | FOREGROUND_GREEN | FOREGROUND_RED);
     console.clearBuffer();
 }
+
 /*
 	This function checks if any key had been pressed since the last time we checked
 	If a key is pressed, the value for that particular key will be true
@@ -279,6 +281,7 @@ void moveCharacter()
 	
 
 }
+
 void processUserInput()
 {
     // quits the game if player hits the escape key
@@ -298,7 +301,26 @@ void renderMap()
 	{
 		for (int x = 0;x < 80;++x)
 		{
+<<<<<<< ea58eb1b679838d091c1d18435341198254a0e1a
 			console.writeToBuffer( x, y, g_cWallPosition[x][y] , 0x08);
+=======
+			if (g_cWallPosition[x][y] == '^')
+			{
+				console.writeToBuffer( x, y, g_cWallPosition[x][y] , 0x0C);
+			}
+			else if (g_cWallPosition[x][y] == 'O')
+			{
+				console.writeToBuffer( x, y, g_cWallPosition[x][y] , 0x0C);
+			}
+			else if (g_cWallPosition[x][y] == '*')
+			{
+				console.writeToBuffer( x, y, g_cWallPosition[x][y] , 0x0E);
+			}
+			else 
+			{
+				console.writeToBuffer( x, y, g_cWallPosition[x][y] , 0x0F);
+			}
+>>>>>>> 2ced59229503807e454b196ee2c071d41f2a23da
 		}
 	}	
 }
@@ -361,6 +383,7 @@ void renderFramerate()
     c.Y = 0;
     console.writeToBuffer(c, ss.str(), 0x59);
 }
+
 void renderToScreen()
 {
     // Writes the buffer to the console, hence you will see what you have written
